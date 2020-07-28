@@ -14,7 +14,12 @@ class StoryController extends Controller
      */
     public function index()
     {
-        //
+        $stories = Story::where('user_id', auth()->user()->id)->get();
+       // dd(auth()->user()->id);
+      //  dd($stories);
+
+        return response()->json($stories);
+        //return view('stories.index', ['stories' => $stories]);
     }
 
     /**
